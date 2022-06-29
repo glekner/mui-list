@@ -15,7 +15,6 @@ import FolderIcon from "@mui/icons-material/Folder";
 
 import { useFetch } from "../../hooks/useFetch";
 import { GenericListItem } from "../GenericList";
-import { delay } from "../../utils";
 
 type FileType = "png" | "doc" | "dir";
 
@@ -30,21 +29,19 @@ export type AsyncFileSystemItemType = AsyncListItem<{
   filetype: FileType;
 }>;
 
-const fakeFetch = async (
-  item: AsyncFileSystemItemType
-): Promise<AsyncFileSystemItemType> => {
-  await delay(1000);
-  return Promise.resolve(item);
+type AsyncFileSystemItemProps = AsyncFileSystemItemType & {
+  onFetch: (item: AsyncFileSystemItemType) => Promise<AsyncFileSystemItemType>;
 };
 
-export const AsyncFileSystemItem: React.FC<AsyncFileSystemItemType> = (
-  item
-) => {
+export const AsyncFileSystemItem: React.FC<AsyncFileSystemItemProps> = ({
+  onFetch,
+  ...item
+}) => {
   const isFolder = item.descendants && item.descendants.length > 0;
   const [open, setOpen] = React.useState(false);
   const [data, isLoading, error] = useFetch<AsyncFileSystemItemType>(
     item,
-    fakeFetch,
+    onFetch,
     {
       skip: !item.descendants || !open,
     }
@@ -95,7 +92,7 @@ export const AsyncFileSystemItem: React.FC<AsyncFileSystemItemType> = (
       <Collapse in={open} timeout="auto">
         {data?.descendants?.map((child) => (
           <List key={child.name} component="div" disablePadding sx={{ pl: 4 }}>
-            <AsyncFileSystemItem {...child} />
+            <AsyncFileSystemItem {...child} onFetch={onFetch} />
           </List>
         ))}
       </Collapse>

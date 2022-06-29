@@ -1,4 +1,5 @@
 import React from "react";
+import { delay } from "../../utils";
 import { GenericList } from "../GenericList";
 import {
   AsyncFileSystemItem,
@@ -41,12 +42,21 @@ const items: AsyncFileSystemItemType[] = [
   },
 ];
 
+const fakeFetch = async (
+  item: AsyncFileSystemItemType
+): Promise<AsyncFileSystemItemType> => {
+  await delay(1000);
+  return Promise.resolve(item);
+};
+
 export const AsyncFileSystemListExample: React.FC = () => {
   return (
     <GenericList
       title="Async File System"
       items={items}
-      renderItem={AsyncFileSystemItem}
+      renderItem={(item) => (
+        <AsyncFileSystemItem key={item.name} onFetch={fakeFetch} {...item} />
+      )}
     />
   );
 };
