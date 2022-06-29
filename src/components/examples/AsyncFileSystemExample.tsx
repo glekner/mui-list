@@ -45,6 +45,10 @@ const items: AsyncFileSystemItemType[] = [
 const fakeFetch = async (
   item: AsyncFileSystemItemType
 ): Promise<AsyncFileSystemItemType> => {
+  /* 
+    on a real scenario I would use a fetch with item.url and return the resolved response into the item's descendants
+    fetch(item.url).then(res => res.json()).then(data => item.descendants = data);
+  */
   await delay(1000);
   return Promise.resolve(item);
 };
