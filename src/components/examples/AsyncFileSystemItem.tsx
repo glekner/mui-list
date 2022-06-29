@@ -78,7 +78,7 @@ export const AsyncFileSystemItem: React.FC<AsyncFileSystemItemProps> = ({
   };
 
   return (
-    <React.Fragment key={item.name}>
+    <>
       <ListItemButton onClick={handleClick} disabled={isLoading}>
         <ListItemIcon>
           {isFolder ? <FolderIcon /> : getItemIcon(item.filetype)}
@@ -89,13 +89,13 @@ export const AsyncFileSystemItem: React.FC<AsyncFileSystemItemProps> = ({
         />
         {isFolder && <>{open ? <ExpandLess /> : <ExpandMore />}</>}
       </ListItemButton>
-      <Collapse in={open} timeout="auto">
+      <Collapse in={!isLoading && open} timeout="auto">
         {data?.descendants?.map((child) => (
           <List key={child.name} component="div" disablePadding sx={{ pl: 4 }}>
             <AsyncFileSystemItem {...child} onFetch={onFetch} />
           </List>
         ))}
       </Collapse>
-    </React.Fragment>
+    </>
   );
 };
