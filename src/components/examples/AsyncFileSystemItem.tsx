@@ -50,6 +50,7 @@ export const AsyncFileSystemItem: React.FC<AsyncFileSystemItemType> = (
     if (isFolder) {
       setOpen(!open);
     }
+    console.log("clicked item", item);
   };
 
   React.useEffect(() => {

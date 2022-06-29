@@ -21,6 +21,7 @@ export const FileSystemItem: React.FC<FileSystemItemType> = ({
 
   const handleClick = () => {
     setOpen(!open);
+    console.log("clicked item", name);
   };
 
   return (
