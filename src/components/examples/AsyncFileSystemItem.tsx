@@ -14,7 +14,7 @@ import ArticleIcon from "@mui/icons-material/Article";
 import Collapse from "@mui/material/Collapse";
 import FolderIcon from "@mui/icons-material/Folder";
 import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
-import { AsyncListItem } from "../Async/AsyncGenericList";
+import { AsyncListItem } from "../AsyncGenericList";
 import { useFetch } from "../../hooks/useFetch";
 
 type FileType = "png" | "doc" | "dir";
@@ -36,6 +36,7 @@ const fakeFetch = async (
 export const AsyncFileSystemItem: React.FC<AsyncFileSystemItemType> = (
   item
 ) => {
+  const isFolder = item.descendants && item.descendants.length > 0;
   const [open, setOpen] = React.useState(false);
   const [data, isLoading, error] = useFetch<AsyncFileSystemItemType>(
     item,
@@ -44,7 +45,6 @@ export const AsyncFileSystemItem: React.FC<AsyncFileSystemItemType> = (
       skip: !item.descendants || !open,
     }
   );
-  const isFolder = item.descendants && item.descendants.length > 0;
 
   const handleClick = () => {
     if (isFolder) {

@@ -1,7 +1,7 @@
 import * as React from "react";
 import ListSubheader from "@mui/material/ListSubheader";
 import List, { ListProps } from "@mui/material/List";
-import { GenericListItem } from "../GenericList";
+import { GenericListItem } from "./GenericList";
 
 export type AsyncListItem<T> = GenericListItem<
   T & {

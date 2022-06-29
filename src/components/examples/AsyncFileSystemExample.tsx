@@ -1,5 +1,5 @@
 import React from "react";
-import { AsyncGenericList } from "../Async/AsyncGenericList";
+import { AsyncGenericList } from "../AsyncGenericList";
 import {
   AsyncFileSystemItem,
   AsyncFileSystemItemType,
@@ -28,6 +28,15 @@ const items: AsyncFileSystemItemType[] = [
           },
         ],
       },
+    ],
+  },
+  {
+    name: "Starred",
+    url: "starred",
+    filetype: "dir",
+    descendants: [
+      { name: "Starred 1", descendants: [], url: "1", filetype: "png" },
+      { name: "Starred 2", descendants: [], url: "2", filetype: "doc" },
     ],
   },
 ];
