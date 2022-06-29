@@ -12,7 +12,7 @@ const items: AsyncFileSystemItemType[] = [
     filetype: "dir",
     descendants: [
       { name: "Starred", descendants: [], url: "2", filetype: "png" },
-      { name: "Sent", descendants: [], url: "3", filetype: "png" },
+      { name: "Pic 2", descendants: [], url: "3", filetype: "png" },
       {
         name: "Drafts",
         url: "7",
