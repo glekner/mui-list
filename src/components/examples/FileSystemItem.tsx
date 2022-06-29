@@ -8,11 +8,11 @@ import FolderIcon from "@mui/icons-material/Folder";
 import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
-import { GenericList, GenericListItem } from "./GenericList";
+import { GenericListItem } from "../GenericList";
 
 export type FileSystemItemType = GenericListItem<{ name: string }>;
 
-const FileSystemItem: React.FC<FileSystemItemType> = ({
+export const FileSystemItem: React.FC<FileSystemItemType> = ({
   name,
   descendants,
 }) => {
@@ -40,17 +40,5 @@ const FileSystemItem: React.FC<FileSystemItemType> = ({
         ))}
       </Collapse>
     </React.Fragment>
-  );
-};
-
-export const FileSystemList: React.FC<{ folders: FileSystemItemType[] }> = ({
-  folders,
-}) => {
-  return (
-    <GenericList
-      title="File System"
-      items={folders}
-      renderItem={FileSystemItem}
-    />
   );
 };

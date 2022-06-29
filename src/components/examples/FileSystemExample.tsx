@@ -1,5 +1,6 @@
 import React from "react";
-import { FileSystemItemType, FileSystemList } from "../FileSystemList";
+import { FileSystemItem, FileSystemItemType } from "./FileSystemItem";
+import { GenericList } from "../GenericList";
 
 const items: FileSystemItemType[] = [
   {
@@ -21,5 +22,11 @@ const items: FileSystemItemType[] = [
 ];
 
 export const FileSystemExample: React.FC = () => {
-  return <FileSystemList folders={items} />;
+  return (
+    <GenericList
+      title="File System"
+      items={items}
+      renderItem={FileSystemItem}
+    />
+  );
 };

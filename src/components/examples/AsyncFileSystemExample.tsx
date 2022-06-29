@@ -32,7 +32,7 @@ const items: AsyncFileSystemItemType[] = [
   },
 ];
 
-export const AsyncFileSystemListExample: React.FC = ({}) => {
+export const AsyncFileSystemListExample: React.FC = () => {
   return (
     <AsyncGenericList
       title="Async File System"

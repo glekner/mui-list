@@ -29,10 +29,6 @@ const delay = (duration: number) =>
 const fakeFetch = async (
   item: AsyncFileSystemItemType
 ): Promise<AsyncFileSystemItemType> => {
-  if (!item.descendants || item.descendants.length === 0) {
-    return item;
-  }
-
   await delay(1000);
   return Promise.resolve(item);
 };
@@ -51,7 +47,9 @@ export const AsyncFileSystemItem: React.FC<AsyncFileSystemItemType> = (
   const isFolder = item.descendants && item.descendants.length > 0;
 
   const handleClick = () => {
-    setOpen(!open);
+    if (isFolder) {
+      setOpen(!open);
+    }
   };
 
   React.useEffect(() => {
