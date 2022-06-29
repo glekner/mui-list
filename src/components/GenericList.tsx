@@ -12,9 +12,7 @@ type GenericListProps<T> = {
   renderItem: (item: GenericListItem<T>) => React.ReactNode;
 } & ListProps;
 
-export type GenericListComponent = <T>(
-  props: GenericListProps<T>
-) => JSX.Element;
+type GenericListComponent = <T>(props: GenericListProps<T>) => JSX.Element;
 
 export const GenericList: GenericListComponent = ({
   title,

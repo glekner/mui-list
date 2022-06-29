@@ -6,25 +6,29 @@ import {
   ListItemIcon,
   ListItemText,
   List,
-  Box,
 } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 import PhotoIcon from "@mui/icons-material/Photo";
 import ArticleIcon from "@mui/icons-material/Article";
 import Collapse from "@mui/material/Collapse";
 import FolderIcon from "@mui/icons-material/Folder";
-import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
-import { AsyncListItem } from "../AsyncGenericList";
+
 import { useFetch } from "../../hooks/useFetch";
+import { GenericListItem } from "../GenericList";
+import { delay } from "../../utils";
 
 type FileType = "png" | "doc" | "dir";
+
+export type AsyncListItem<T> = GenericListItem<
+  T & {
+    url: string;
+  }
+>;
+
 export type AsyncFileSystemItemType = AsyncListItem<{
   name: string;
   filetype: FileType;
 }>;
-
-const delay = (duration: number) =>
-  new Promise((resolve) => setTimeout(resolve, duration));
 
 const fakeFetch = async (
   item: AsyncFileSystemItemType

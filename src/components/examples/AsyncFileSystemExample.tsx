@@ -1,5 +1,5 @@
 import React from "react";
-import { AsyncGenericList } from "../AsyncGenericList";
+import { GenericList } from "../GenericList";
 import {
   AsyncFileSystemItem,
   AsyncFileSystemItemType,
@@ -43,7 +43,7 @@ const items: AsyncFileSystemItemType[] = [
 
 export const AsyncFileSystemListExample: React.FC = () => {
   return (
-    <AsyncGenericList
+    <GenericList
       title="Async File System"
       items={items}
       renderItem={AsyncFileSystemItem}
