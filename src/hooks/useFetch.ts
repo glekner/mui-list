@@ -29,8 +29,6 @@ export const useFetch = <T extends { url: string }>(
         return setData(cache.current[item.url]);
       }
 
-      console.log("im here");
-
       setLoading(true);
       setError(undefined);
 
