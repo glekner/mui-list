@@ -11,7 +11,7 @@ type Cache<T> = {
 
 export const useFetch = <T extends { url: string }>(
   item: T,
-  onLoad: (item: T) => Promise<T>,
+  onFetch: (item: T) => Promise<T>,
   { skip, options }: useFetchArgs = {}
 ): [T | undefined, boolean, any] => {
   const [data, setData] = useState<T>();
@@ -35,7 +35,7 @@ export const useFetch = <T extends { url: string }>(
       setError(undefined);
 
       try {
-        const response = await onLoad(item);
+        const response = await onFetch(item);
 
         if (!ignore) {
           setData(response);
