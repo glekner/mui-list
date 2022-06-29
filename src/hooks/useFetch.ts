@@ -59,12 +59,3 @@ export const useFetch = <T extends { url: string }>(
 
   return [data, isLoading, error];
 };
-
-/*
-    name: folder1
-    decendants: [/path/to/folder/2]
-
-    clicks on folder1
-    async loading folder 2
-
-*/
